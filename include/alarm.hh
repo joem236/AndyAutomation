@@ -5,8 +5,35 @@ using namespace std;
 
 class Alarm {
 public:
-  Alarm() : _id(0), _name(""), _repeat(false), _days_of_week_mask(0), _hour(0), _minute(0), _second(0) {}
-  Alarm(unsigned id, string name, bool repeat, int _dowm, int h, int m, int s) : _id(id), _name(name), _repeat(repeat), _days_of_week_mask(dowm), _hour(h), _minute(m), _second(s) {}
+  Alarm() : _id(0), 
+	    _name(""), 
+	    _repeat(false), 
+	    _days_of_week_mask(0), 
+	    _hour(0), 
+	    _minute(0), 
+	    _second(0) {}
+  Alarm(unsigned id, 
+	string name, 
+	bool repeat, 
+	int _dowm, 
+	int h, 
+	int m, 
+	int s) : _id(id), 
+		 _name(name), 
+		 _repeat(repeat), 
+		 _days_of_week_mask(dowm), 
+		 _hour(h), 
+		 _minute(m), 
+		 _second(s) {}
+  Alarm(const Alarm &alarm) {
+    _id = alarm.getId();
+    _name = alarm.getName();
+    _repeat = alarm.getRepeat();
+    _days_of_week_mask = alarm.getDaysOfWeek();
+    _hour = alarm.getHour();
+    _minute = alarm.getMinute();
+    _second = alarm.getSecond();
+  }
   ~Alarm() {}
   void setId(unsigned id) { _id = id; }
   unsigned getId() { return _id; }
